@@ -26,7 +26,8 @@ def test_ChallengeWrapper_reset(cyborg):
 
 def test_ChallengeWrapper_step(cyborg):
     cyborg.reset()
-    obs,reward,done,info = cyborg.step(action=0)
+    obs,reward,terminated,truncated,info = cyborg.step(action=0)
+    done = terminated or truncated
     expected_observation = np.array([0 for x in range(52)])
     assert all(obs == expected_observation)
     assert reward == 0
