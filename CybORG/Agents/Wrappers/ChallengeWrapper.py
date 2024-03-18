@@ -34,9 +34,9 @@ class ChallengeWrapper(Env,BaseWrapper):
 
         return obs, reward, terminated, truncated, info
 
-    def reset(self):
+    def reset(self, **kwargs):
         self.step_counter = 0
-        return self.env.reset()
+        return self.env.reset(**kwargs)
 
     def get_attr(self,attribute:str):
         return self.env.get_attr(attribute)

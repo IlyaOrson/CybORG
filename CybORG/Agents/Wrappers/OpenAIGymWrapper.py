@@ -34,11 +34,12 @@ class OpenAIGymWrapper(Env, BaseWrapper):
         info = vars(result)
         return np.array(result.observation), result.reward, terminated, truncated, info
 
-    def reset(self, agent=None):
-        result = self.env.reset(self.agent_name)
+    def reset(self, agent=None, **kwargs):
+        result = self.env.reset(self.agent_name, **kwargs)
         result.action_space = self.action_space_change(result.action_space)
         result.observation = self.observation_change(result.observation)
-        return np.array(result.observation)
+        # gymnasium API: observation, info = env.reset(seed=None, options={})
+        return np.array(result.observation), vars(result)
 
     def render(self):
         # TODO: If FixedFlatWrapper it will error out!

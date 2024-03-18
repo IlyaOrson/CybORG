@@ -128,7 +128,7 @@ def test_get_attr(cyborg):
         assert cyborg.get_attr(attribute) == cyborg.env.get_attr(attribute)
 
 def test_get_observation(cyborg):
-    step_obs = cyborg.reset()
+    step_obs, info = cyborg.reset()
     method_obs = cyborg.get_observation(cyborg.agent_name)
     assert all(step_obs == method_obs)
 

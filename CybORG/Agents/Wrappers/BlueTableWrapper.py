@@ -17,8 +17,8 @@ class BlueTableWrapper(BaseWrapper):
         self.output_mode = output_mode
         self.blue_info = {}
 
-    def reset(self, agent='Blue'):
-        result = self.env.reset(agent)
+    def reset(self, agent='Blue', **kwargs):
+        result = self.env.reset(agent, **kwargs)
         obs = result.observation
         if agent == 'Blue':
             self._process_initial_obs(obs)

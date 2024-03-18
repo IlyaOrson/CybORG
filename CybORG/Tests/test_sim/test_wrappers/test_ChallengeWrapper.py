@@ -20,7 +20,7 @@ def cyborg(request,agents = {'Blue':BlueMonitorAgent,'Red':B_lineAgent},seed = 1
     return cyborg
 
 def test_ChallengeWrapper_reset(cyborg):
-    obs = cyborg.reset()
+    obs, info = cyborg.reset()
     expected_observation = np.array([0 for x in range(52)])
     assert all(obs == expected_observation)
 
